@@ -1,17 +1,17 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import LikePage from './pages/LikePage';
+import React from "react";
+import Home from "./pages/Home";
+import LikePage from "./pages/LikePage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/coups-de-coeurs' element={<LikePage />}/>
-        <Route path='/*' element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/coups-de-coeur" element={<LikePage />} />
+        <Route path="*" element={<Home />} />
       </Routes>
-    </div>
+    </BrowserRouter>
   );
 };
 

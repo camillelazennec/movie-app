@@ -1,7 +1,5 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
 import Card from "./Card";
 
 const Form = () => {
@@ -29,32 +27,34 @@ const Form = () => {
           />
           <input type="submit" value="Rechercher" />
         </form>
+
         <div className="btn-sort-container">
           <div
             className="btn-sort"
             id="goodToBad"
             onClick={() => setSortGoodBad("goodToBad")}
           >
-            Top<span>➜</span>
+            Top<span>→</span>
           </div>
           <div
             className="btn-sort"
             id="badToGood"
             onClick={() => setSortGoodBad("badToGood")}
           >
-            Flop<span>➜</span>
+            Flop<span>→</span>
           </div>
         </div>
       </div>
       <div className="result">
         {moviesData
-          .slice(0, 12)
+          .slice()
           .sort((a, b) => {
             if (sortGoodBad === "goodToBad") {
               return b.vote_average - a.vote_average;
             } else if (sortGoodBad === "badToGood") {
               return a.vote_average - b.vote_average;
             }
+            return 0;
           })
           .map((movie) => (
             <Card movie={movie} key={movie.id} />
